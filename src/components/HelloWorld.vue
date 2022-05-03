@@ -1,13 +1,33 @@
 <script>
+import BigTitle from "@/components/BigTitle";
 
 export default {
   name: 'HelloWorld',
+  components: {
+    BigTitle
+  },
+  data() {
+    return {
+      title: ''
+    }
+  },
+  computed:{
+    setTitle: ()=>{
+      console.log(this.message)
+    }
+  }
 }
 </script>
 
 <template>
   <div>
-    <h1>TopPage</h1>
+    <template v-if="!!title">
+      <BigTitle :message="title"></BigTitle>
+    </template>
+    <template v-else>
+      <BigTitle></BigTitle>
+    </template>
+    <textarea class="textarea" v-model="title"></textarea>
   </div>
 </template>
 
